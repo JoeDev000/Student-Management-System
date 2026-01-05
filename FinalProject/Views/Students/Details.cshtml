@@ -1,0 +1,103 @@
+﻿@using FinalProject.Models.Entities
+@using System.ComponentModel.DataAnnotations
+@using FinalProject.Helpers
+
+@model FinalProject.Models.Entities.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-user me-2"></i>Student Details
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-12 text-center mb-4">
+                            <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <span class="text-white fw-bold" style="font-size: 2rem;">@Model.Name?.Substring(0, 1).ToUpper()</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="border rounded p-3 bg-light">
+                                <label class="form-label fw-bold text-primary mb-2">
+                                    <i class="fas fa-hashtag me-2"></i>Student ID
+                                </label>
+                                <p class="mb-0 fs-5 fw-semibold">@Model.Id</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <div class="border rounded p-3 bg-light">
+                                <label class="form-label fw-bold text-primary mb-2">
+                                    <i class="fas fa-user me-2"></i>Full Name
+                                </label>
+                                <p class="mb-0 fs-5">@Model.Name</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="border rounded p-3 bg-light">
+                                <label class="form-label fw-bold text-primary mb-2">
+                                    <i class="fas fa-envelope me-2"></i>Email Address
+                                </label>
+                                <p class="mb-0 fs-6">
+                                    <a href="mailto:@Model.Email" class="text-decoration-none">@Model.Email</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <div class="border rounded p-3 bg-light">
+                                <label class="form-label fw-bold text-primary mb-2">
+                                    <i class="fas fa-phone me-2"></i>Phone Number
+                                </label>
+                                <p class="mb-0 fs-6">
+                                    <a href="tel:@Model.Phone" class="text-decoration-none">@Model.Phone</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <div class="border rounded p-3 bg-light">
+                                <label class="form-label fw-bold text-primary mb-2">
+                                    <i class="fas fa-university me-2"></i>Department
+                                </label>
+                                <p class="mb-0 fs-5">@Model.Department.GetDisplayName()</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="d-flex gap-2 justify-content-center">
+                                <a asp-action="Index" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left me-2"></i>Back to List
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                                    <i class="fas fa-edit me-2"></i>Edit Student
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                                    <i class="fas fa-trash me-2"></i>Delete Student
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
